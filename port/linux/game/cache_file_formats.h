@@ -40,7 +40,12 @@ against the file or buffer it refers to before it is used.
 does at 0x803A6000: 0x40440000, above a 0x440000-byte game state at
 0x40000000, with 23 MB of room (OpenSauce cache_constants.hpp). Every map
 examined puts its structure BSPs at the top of that room. */
-#define CUSTOM_EDITION_TAG_CACHE_ADDRESS 0x40440000UL
+/* TEST BUILD ONLY (not for upstream): a device whose ROM pins ART's JIT
+code caches over 0x40440000 (Redmi Note 11, MIUI 14: jit-zygote-cache at
+0x3da09000-0x41a09000) cannot reserve the CE tag cache there, which also
+disables Custom Edition map downloads. The window is moved into the free
+0x32000000-0x3da09000 gap seen in that device's memory_map.txt. */
+#define CUSTOM_EDITION_TAG_CACHE_ADDRESS 0x34000000UL
 #define CUSTOM_EDITION_TAG_CACHE_BYTES 0x01700000UL
 /* the largest map: Halo PC's were 384 MiB, and Invader builds larger ones
 that Chimera runs. This build reads a map by its offsets, so the map need
