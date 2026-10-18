@@ -1,0 +1,1 @@
+Test build for moving the Custom Edition tag cache window to 0x34000000 (Redmi Note 11 / MIUI 14 JIT cache conflict). Branch builds the Android APK only for device testing.
